@@ -14,7 +14,7 @@ from discord.ext import commands
 
 nest_asyncio.apply()
 
-mongo_url = "mongodb+srv://prakarsh17:Prakarsh_262@enalevel.v4asb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+mongo_url = os.environ['levelmong']
 
 cluster = motor.motor_asyncio.AsyncIOMotorClient(mongo_url)
 levelling = cluster["discord"]["levelling"]
@@ -22,14 +22,13 @@ levelling = cluster["discord"]["levelling"]
 isitenabled = cluster["discord"]["enalevel"]
 
 
-class Levelsys(commands.Cog):
+class Level(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.vac_api = vacefron.Client()
     @commands.Cog.listener()
     async def on_ready(self):
         print("Levelsys cog loaded successfully")
-
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.guild is not None:
@@ -57,7 +56,7 @@ class Levelsys(commands.Cog):
                         levelling.insert_one(newuser)
 
                     else:
-                        xp = stats["xp"] + random.randrange(1,10)
+                        xp = stats["xp"] + 5
                         levelling.update_one(
                             {"id": message.author.id}, {"$set": {"xp": xp}}
                         )
@@ -69,17 +68,17 @@ class Levelsys(commands.Cog):
                                 break
                             lvl += 1
                         xp -= (50 * ((lvl - 1) ** 2)) + (50 * (lvl - 1))
-
                         if xp == 0:
-
-                            await message.channel.send(
-                                f"Well done {message.author.mention} You levelled up to **level: {lvl}**"
-                            )
+                          
+                            emx=discord.Embed(title="Level Up ! <:uparrow:941994550027759616>",description=f"🎊 Well done  {message.author.mention} ! You levelled up to **level: {lvl}**  🎉",color=discord.Color.dark_theme())                          
+                            emx.set_footer(text="Use rank or db command for more info")
+                            await message.channel.send(embed=emx)
+                                
 
         else:
             pass
 
-    @commands.command(aliases=["xp", "r"], description="Shows your xp and global rank")
+    @commands.command(aliases=["xp", "r","level"], description="Shows your xp and global rank")
     async def rank(self, ctx,user:discord.Member=None,):
         if user ==None:
           user = ctx.author
@@ -113,7 +112,6 @@ class Levelsys(commands.Cog):
                     lvl += 1
                 xp -= (50 * ((lvl - 1) ** 2)) + (50 * (lvl - 1))
                 
-                boxes = int((xp / (200 * ((1 / 2) * lvl))) * 20)
                 rankings = levelling.find().sort("xp", -1)
 
                 async for x in rankings:
@@ -125,60 +123,21 @@ class Levelsys(commands.Cog):
                 elif rank ==3:
                   emoji ="🥉"
                 elif rank ==2:
-                  emoji ="🥈"
+                  emoji ="<:2rd:939020302426460220>"
                 elif rank ==1:
-                  emoji ="🥇"                                   
-                embed = discord.Embed(
-                    timestamp=ctx.message.created_at,
-                    title=f"{user.name}'s Level stats",
-                    color=0x34363A,
-                )
-                embed.add_field(name="Name", value=f"{user.mention}", inline=True)
-                embed.add_field(
-                    name="XP", value=f"{xp}/{int(200* ((1/2)*lvl))}", inline=True
-                )
-                embed.add_field(name="Global Rank", value=f"{emoji}{rank}", inline=True)
-                embed.add_field(name="Level", value=f"{lvl}", inline=True)
-                embed.add_field(
-                    name="Progress Bar ",
-                    value=boxes * "⬜"
-                    + (20 - boxes) * "⬛",
-                    inline=False,
-                )
-                embed.set_thumbnail(url=user.avatar_url)
-
-                '''
-                args = {
-               
-                  'profile_image' : user.avatar_url, # User profile picture link
-                  'level' : lvl, # User current level 
-                  'current_xp' : 0, # Current level minimum xp 
-                  'user_xp' : xp, # User current xp
-                  'next_xp' : int(200* ((1/2)*lvl)), # xp required for next level
-                  'user_position' : rank, # User position in leaderboard
-                  'user_name' : user.display_name, # user name with descriminator 
-                  #'user_status' : user.status, # User status eg. online, offline, idle, streaming, dnd
-                  'user_status' : 'online',
-                }
-
-                image = Generator().generate_profile(**args)
-
-                # In a discord command
-                file = discord.File(fp=image, filename='image.png')
-                '''
-
+                  emoji ="<:1st:939020133702201344>"            
                 gen_card = await self.vac_api.rank_card(
-                            username = str(user),  # wrapper will handle the #
-                            avatar = user.avatar_url_as(format = "png"),  # converting avatar to .png, including .gif
+                            username = str(user),  
+                            avatar = user.avatar_url_as(format = "png"),  
                             level = lvl, # optional level int on the xp bar.
                             rank = rank, # optional #int on the card.
                             current_xp = xp,
                             next_level_xp = int(200* ((1/2)*lvl)),  # you will need calculate this according the current_xp.
                             previous_level_xp = 0,  # you will need calculate this according the current_xp.
-                            custom_background = 'https://raw.githubusercontent.com/prakarsh17/TessarectWebsite/main/assets/img/footer-bg.jpg',  # optional custom background.
-                            xp_color = '7FFFD4',  # optional progress bar color. Defaults to #fcba41. 
+                            custom_background = 'https://media.discordapp.net/attachments/929334504236122123/983977178465202176/unknown.png',  # optional custom background.
+                            xp_color = '04d9ff',  # optional progress bar color. Defaults to #fcba41. 
                             #is_boosting = ,  # optional server boost icon next to username.
-                            circle_avatar = False  # optional circle avatar instead of a square.
+                            circle_avatar = True  # optional circle avatar instead of a square.
                             )
                 rank_image = discord.File(fp = await gen_card.read(), filename = f"{user.name}_rank.png")
                 await ctx.channel.send(file = rank_image) 
@@ -210,8 +169,15 @@ class Levelsys(commands.Cog):
                 try:
                     temp = ctx.guild.get_member(x["id"])
                     tempxp = x["xp"]
+                    emo=''
+                    if i == 1:
+                      emo='<:1st:939020133702201344>'
+                    elif i == 2:
+                      emo='<:2rd:939020302426460220>'
+                    else:
+                      emo='<:offline_status:946652644083113984>'
                     embed.add_field(
-                        name=f"{i} : {temp.name}", value=f"XP: {tempxp}", inline=False
+                        name=f"{emo} {i} : {temp.name}", value=f"XP: {tempxp}", inline=False
                     )
                     i += 1
                 except:
@@ -231,4 +197,4 @@ class Levelsys(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Levelsys(client))
+    client.add_cog(Level(client))

@@ -64,14 +64,14 @@ Do not enter the "channel" argument to clear the madlibs channel entry from my d
         if channel is None:
             try:
                 self.madlibs_channels.pop(str(ctx.guild.id))  # removing the server's channel from the dictionary
-                return await ctx.send("MadLibs channel removed from database succesfully.")
+                return await ctx.send(embed=discord.Embed(description="MadLibs channel removed from database succesfully.",color=discord.Color.dark_theme()))
             except Exception as e:
                 return print(traceback.format_exc(e))
 
         self.madlibs_channels[str(ctx.guild.id)] = channel.id
         with open("storage/madlibs_channels.json", "w") as writeFile:
             json.dump(self.madlibs_channels, writeFile)
-        await ctx.send(f"MadLibs channel set as {channel.mention} succesfully!")
+        await ctx.send(embed=discord.Embed(description=f"MadLibs channel set as {channel.mention} succesfully!",color=discord.Color.dark_theme()))
 
     @commands.command(name="madlibs", aliases=["ml"], description="Let's play MadLibs!")
     async def play_madlibs(self, ctx):
@@ -79,7 +79,7 @@ Do not enter the "channel" argument to clear the madlibs channel entry from my d
         if channel_id:
             channel = self.bot.get_channel(id=int(channel_id))
             if not channel == ctx.message.channel:
-                return await ctx.send(f"You can only play MadLibs in {channel.mention}.")
+                return await ctx.send(embed=discord.Embed(description=f"You can only play MadLibs in {channel.mention}.",color=discord.Color.red()))
 
         madlibs_dict = await aiohttp_get(self.madlibsApi)
         madlibs_dict = json.loads(madlibs_dict)
@@ -88,13 +88,18 @@ Do not enter the "channel" argument to clear the madlibs channel entry from my d
         value = madlibs_dict.get("value")[:-1]
         user_results = []
         for x in range(len(blanks)):  # get the input from the user for each entry in the blanks list
-            await ctx.send(f"**{x + 1}/{len(blanks)}** - "
-                           f"_{ctx.author.display_name}_, I need "
+            em = discord.Embed(description=f"**{x + 1}/{len(blanks)}** - "
+                           f"{ctx.author.mention}, I need "
                            f"{'an' if blanks[x][0].lower() in self.vowels else 'a'} "  # vowels
-                           f"{blanks[x]}")
+                           f"{blanks[x]}",color=0x34363A)
+            em.set_footer(text="Type cancel to end the game")
+            await ctx.send(embed=em)
             user_input_message = await self.bot.wait_for(
                 "message", check=lambda message: message.channel == ctx.message.channel and message.author == ctx.author
                 , timeout=15)
+
+            if user_input_message.content=='cancel':
+              return await ctx.send('Oh Ok , Lets end this game')
 
             user_results.append(f"**{user_input_message.content}**")  # append results to another dict
         string = ""
@@ -103,7 +108,7 @@ Do not enter the "channel" argument to clear the madlibs channel entry from my d
             string += user_results[x]
         string += value[-1]  # adding the final value tha twas missed in the for loop
         embed=discord.Embed(title=title, description=string, colour=get_color(ctx.author))
-        embed.set_footer(text=f"Good job, {ctx.author.display_name}!", icon_url=ctx.author.avatar_url)
+        embed.set_footer(text=f"Excellent, {ctx.author.display_name}!", icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
 
     @play_madlibs.error

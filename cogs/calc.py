@@ -4,9 +4,10 @@ import requests
 from discord.ext import commands
 
 
-class Calc(commands.Cog):
+class Calculator(commands.Cog):
     def __init__(self, client):
         self.client = client
+        self.description="<:sucess:935052640449077248> Calculator "
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -14,8 +15,8 @@ class Calc(commands.Cog):
 
     @commands.command(description="Calculates the given expression")
     async def calc(self, ctx, *, expression):
-        if len(expression) > 30:
-            await ctx.send("**Too big equation**")
+        if len(expression) > 10000:
+            await ctx.send("**I dont think I can bear that much**")
         else:
             st = expression.replace("+", "%2B")
             async with aiohttp.ClientSession() as session:
@@ -23,25 +24,29 @@ class Calc(commands.Cog):
                     f"https://api.mathjs.org/v4/?expr={st}"
                 ) as response:
                     ex = await response.text()
-                    if len(ex) > 200:
-                        await ctx.send("Too big result")
+                    if len(ex) > 20000:
+                        await ctx.send("I dont think I can bear that much")
                     else:
 
                         embed = discord.Embed(
                             timestamp=ctx.message.created_at,
-                            title="Expression",
-                            description=f"```{expression}```",
-                            color=0xFF0000,
+                            description="Here is the result ",
+                            color=discord.Color.gold()
                         )
                         embed.add_field(
-                            name=f"Result", value=f"```{ex}```", inline=False
+                            name=f"Expression", value=f"```css\n{expression}```", inline=False
+                        )                      
+                        embed.add_field(
+                            name=f"Result", value=f"```css\n{ex}```", inline=False
                         )
+                        
                         embed.set_author(
-                            name="Calculator",
-                            icon_url="https://www.webretailer.com/wp-content/uploads/2018/10/Flat-calculator-representing-Amazon-FBA-calculators.png",
+                            name="Calculator"
+                            
                         )
+                        embed.set_thumbnail(url="https://www.involve.me/assets/images/blog/how-to-create-a-simple-price-calculator-and-capture-more-leads/calculator-L.png",)
                         await ctx.send(embed=embed)
 
 
 def setup(client):
-    client.add_cog(Calc(client))
+    client.add_cog(Calculator(client))

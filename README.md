@@ -1,20 +1,21 @@
 
-<p align="center">
-<h1 align="center">TESSARECT </h1>
-</p>
+<a href="https://discord.com/oauth2/authorize?client_id=916630347746250782&permissions=8&scope=bot&applications.commands">
+    <img src="https://raw.githubusercontent.com/prakarsh17/TessarectWebsite/main/assets/img/tessarectnewround.png" alt="Tessarect logo" title="Tessarect" align="right" height="200" />
+</a>
 
-
-<p align="center">
-
-  <a href="https://discord.gg/avpet3NjTE">
-    <img src="https://raw.githubusercontent.com/prakarsh17/tessarect-bot/main/Tessarect%20New%20Final.jpg" height=200 width=200 alt="Tessarect Logo">
-  </a>
-</p>
+# Tessarect Discord Bot
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&color=FFFF33&height=100&lines=Beep+Boop+!+Hello+this+is+Tessarect;An+advance+and+powerful+bot+;Developed+chiefly+by+prakarsh17+)](https://git.io/typing-svg)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![GitHub license](https://img.shields.io/github/license/prakarsh17/tessarect-bot.svg)](https://github.com/prakarsh17/tessarect-bot/blob/main/LICENSE)
+[![Issues](https://img.shields.io/github/issues/prakarsh17/tessarect-bot.svg?colorB=3333ff)](https://github.com/Gorialis/jishaku/issues)
+[![Commit activity](https://img.shields.io/github/commit-activity/w/prakarsh17/tessarect-bot.svg)](https://github.com/Gorialis/jishaku/commits)
 
 ___
-It is my First bot but very advanced and designed for all your needs , from Moderation to cool Economy Features .
+##### Another general purpose discord bot but with Economy commands and much more Well Attractive , Economy and Leveling Bot with tons of features. Utitlity Bot , Music Bot , Economy Bot , Moderation Bot and much more .
 
+⭐ Star us on GitHub — it motivates us a lot!
 
+🔗Always Up of PRs - Contribute now
 </a>
 </p>
 <p align="center">
@@ -27,27 +28,8 @@ It is my First bot but very advanced and designed for all your needs , from Mode
   <a href="https://github.com/prakarsh17/tessarect-bot/blob/main/LICENSE">License</a>
 </p>
 
-<p align="center">
 
-  <a href="https://discord.gg/avpet3NjTE">
-    <img src="https://discordapp.com/api/guilds/912569937116147772/widget.png?style=shield" alt="Discord Server">
-  </a>
-
-
-  <a href="https://github.com/Rapptz/discord.py/">
-     <img src="https://img.shields.io/badge/discord-py-blue.svg" alt="discord.py">
-  </a>
-
-
-
-
-
-  <a href="http://makeapullrequest.com">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  </a>
-  <br>
-  </p>
-  <h6 align="center"> Services Used In the Project</h6>
+  <h6 align="center"> Services Used In the Bot</h6>
   <p align="center">
   <a href="https://www.mongodb.com/">
     <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white">
@@ -71,7 +53,7 @@ It is my First bot but very advanced and designed for all your needs , from Mode
     <img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white">
   </a>
   <a href="https://discord.gg/avpet3NjTE">
-    <img src="https://img.shields.io/badge/%3CTessarect Official%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white">
+    <img src="https://img.shields.io/badge/%3CTessa Bot Developers%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white">
   </a>
 
 
@@ -84,32 +66,17 @@ It is my First bot but very advanced and designed for all your needs , from Mode
     <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   </a>
   </p>
+  
+<hr>
 
-
-
-
-
-
-<h6 align="center"> Some More Badges....</h6>
-
-
-[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://ForTheBadge.com)
-[![ForTheBadge makes-people-smile](http://ForTheBadge.com/images/badges/makes-people-smile.svg)](http://ForTheBadge.com)
-___
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![GitHub license](https://img.shields.io/github/license/prakarsh17/tessarect-bot.svg)](https://github.com/prakarsh17/tessarect-bot/blob/main/LICENSE)
-[![Issues](https://img.shields.io/github/issues/prakarsh17/tessarect-bot.svg?colorB=3333ff)](https://github.com/Gorialis/jishaku/issues)
-[![Commit activity](https://img.shields.io/github/commit-activity/w/prakarsh17/tessarect-bot.svg)](https://github.com/Gorialis/jishaku/commits)
-
-<h2 align="center">Top.gg</h2>
+<h3 align="center">Top.gg</h3>
 <h6 align="center">Tessarect got accepted on top.gg on 9 Feb 22 , we thank you all for your support .Vote for it NOW !</h6>
-
-
 <p align="center">
 <a href="https://top.gg/bot/916630347746250782" >
   <img src="https://top.gg/api/widget/916630347746250782.svg">
 </a>
 
+<hr>
 
 # Features
 - [x] Economy Bot
@@ -120,11 +87,16 @@ ___
 - [x] Ticket System
 - [x] Translation
 - [x] Moderator Commands (More commands Under development)
-- [x] Images Commands (Fixed Again)
-- [x] AUTOMOD (Made 3 filters , more soon)
-- [ ] Advanced Economy Features (surprise awaits)
+- [x] Images Commands 
+- [x] AutoMod and filters (added antispam recently)
+- [ ] Advanced Economy Features (in todo list)
+- [ ] Lighter Bot (reduced load on bot)
+
+***
+
+
 # Cogs (Plugins)
-**40+ Cogs(plugins) for better experience and more features** 
+**35+ Cogs (plugins) for better experience and more features** 
 
 | Cogs   | Description |
 | ----------- | ----------- |
@@ -133,6 +105,7 @@ ___
 | [`calc`](./cogs/calc.py) | Calculator |
 | [`Covid `](./cogs/covid.py) | Covid Stats |
 | [`developer`](./cogs/dev.py) |  For the Developers of Tessarect to control the bot from within Discord |
+| [`Tessarect`](./cogs/system.py) | Control and other important features for maintaining and keeping bot safe also a self control plugin |
 | [`enalevel`](./cogs/enalevel.py) | Toggle Level Commands |
 | [`Encyrpt`](./cogs/encyrpted.py) | 👀 Code / Decode some secret Messages |
 | [`Fun and Utility`](./cogs/fun.py) | Self Explanatory |
@@ -144,14 +117,20 @@ ___
 | [`level`](./cogs/level.py) | Levelling Sytem 🥇|
 | [`Loan`](./cogs/loan.py) | 💰 Take Loans |
 | [`Logging`](./cogs/logging.py) | 📜Keep and Eye on your member's activity |
-| [`Lottery`](./cogs/lottery.py) | Another Economy Plugins for buying lottery tickets when there is an event  |
 | [`Madlibs`](./cogs/madlibs.py) | PLay and Test|
 | [`Mod`](./cogs/mod.py) | 🔨 Moderators Commands ( New and under development )|
 | [`Music`](./cogs/music.py) | 🎶 Listen to some Music Dude|
+| [`Setup`](./cogs/setup.py) | The basic Cog for setting and starting up with Tessarect |
+| [`Sniper`](./cogs/snipe.py) | 🔫 Sniper for sniping people who try to hide |
 | [`Much MORE`](./cogs) | 10 + Cogs in the cogs Folder |
 ###### And Much more cogs hidden for making your experience Better Note : All cogs arent Listed here go to the cogs folder to see all the cogs
-### Wanna Like Making Tessarect Better ?
-###### Contribute now to tessarect see  👇🏻
+
+<h4> Dashboard Website ( Under Development ) </h4>
+
+https://tessarect.prakarsh17.senarc.org/
+
+### Do you have an idea for Tessarect ?
+###### Contribute now to tessarect , check out  👇🏻
 [Contributing Guide](CONTRIBUTING.md)
 ___
 ## Stargazers
@@ -161,7 +140,7 @@ ___
 
 ## Contributors
 
-###### People who made Tessarect Possible  (bots too !)
-  <a href="https://github.com/prakarsh17/tessarect-bot">
-    <img src="https://contrib.rocks/image?repo=prakarsh17/tessarect-bot">
+<h6 align=center>People who made Tessarect Possible</h6>
+  <a href="https://github.com/prakarsh17/tessarect-bot" align=center>
+    <img src="https://contrib.rocks/image?repo=prakarsh17/tessarect-bot" align=center>
   </a>

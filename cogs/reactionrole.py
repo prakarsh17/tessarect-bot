@@ -52,10 +52,11 @@ class ReactionRoles(commands.Cog):
         title,*,
         message:str,
     ):
-        embed = discord.Embed(title=title, description=message)
+        embed = discord.Embed(title=title, description=message,color=discord.Color.dark_theme())
         msg = await channel.send(embed=embed)
         await msg.add_reaction(emote)
         self.add_reaction(ctx.guild.id, emote, role.id, channel.id, msg.id)
+        await ctx.send(embed=discord.Embed(description="Successfully sent and recorded ",color=0xFFC0CB))
 
     @commands.has_permissions(manage_channels=True)
     @commands.command()
@@ -63,13 +64,13 @@ class ReactionRoles(commands.Cog):
         self, ctx, emote, role: discord.Role, channel: discord.TextChannel, message_id
     ):
         self.add_reaction(ctx.guild.id, emote, role.id, channel.id, message_id)
-
+        
     @commands.has_permissions(manage_channels=True)
     @commands.command()
     async def reactions(self, ctx):
         guild_id = ctx.guild.id
         data = reaction_roles_data.get(str(guild_id), None)
-        embed = discord.Embed(title="Reaction Roles")
+        embed = discord.Embed(title="Reaction Roles",color=discord.Color.dark_theme())
         if data is None:
             embed.description = "There are no reaction roles set up right now."
         else:
@@ -91,7 +92,7 @@ class ReactionRoles(commands.Cog):
     async def reaction_remove(self, ctx, index: int):
         guild_id = ctx.guild.id
         data = reaction_roles_data.get(str(guild_id), None)
-        embed = discord.Embed(title=f"Remove Reaction Role {index}")
+        embed = discord.Embed(title=f"Remove Reaction Role {index}",color=discord.Color.dark_theme())
         rr = None
         if data is None:
             embed.description = "Given Reaction Role was not found."
